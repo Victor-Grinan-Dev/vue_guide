@@ -18,9 +18,38 @@
     </header>
     <section id="events">
       <h2>Events in Action</h2>
-      <button>Add</button>
-      <button>Remove</button>
+      <button v-on:click="add">Add</button>
+      <button v-on:click="subs">Remove</button>
+      <button v-on:click="add5(5)">Add 5</button>
+      <button v-on:click="subs5(5)">Remove 5</button>
       <p>Result: {{ counter }}</p>
+      <input
+        type="text"
+        v-on:input="setInput($event, 'plus second argument')"
+      />
+      <p>Your input: {{textInput}}</p>
+      <form v-on:submit.prevent="submitForm">
+        prevent default
+        <input type="text" />
+        <button>signup</button>
+      </form>
+      <br />
+      <div>write and press enter to display:</div>
+
+      <!--
+      <input
+        type="text"
+        v-on:input="setText($event)"
+        v-on:keyup.enter="confirmText"
+      />
+      -->
+
+      <input
+        :value="text"
+        @input="event => text = event.target.value"
+        v-on:keyup.enter="confirmText"
+      />
+      <p>Text: {{confirmedText}}</p>
     </section>
   </body>
 </html>
