@@ -6,7 +6,14 @@ const app = Vue.createApp({
       text: "",
       confirmedText: "",
       inputToReset: "",
+      firstname: "",
+      lastname: "",
     };
+  },
+  computed: {
+    fullname() {
+      return this.firstname + " " + this.lastname;
+    },
   },
   methods: {
     add() {

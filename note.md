@@ -46,3 +46,9 @@ this directive creates an initial evaluation and doesnt update:
 <p v.once> {{ data }} </p>
 ```
 the displayed data will not update despite of the actual data changing
+
+## Computed properties:
+
+- are methods that vue will be aware of there dependencies and only will execute if one of the dependencies chages.
+
+- you want to use the computed properties instead of methods for performance sake.
