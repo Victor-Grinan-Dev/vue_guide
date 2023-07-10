@@ -52,3 +52,24 @@ the displayed data will not update despite of the actual data changing
 - are methods that vue will be aware of there dependencies and only will execute if one of the dependencies chages.
 
 - you want to use the computed properties instead of methods for performance sake.
+
+## watchers
+
+- watch over a data value, recives that value as an argument automaticaly, and returns nothig but can trigger further logics base on the data being watch.
+- it can recieve old and new values as argument.
+- it becomes wordy ehrn need to watch over to different datas at once, for that is better to use computed instead. 
+- utilities: timers, https requests,  
+syntax:
+```js
+{
+    data(){
+    foo:"",
+    },
+    watch:{
+        foo(){
+            /*when foo changes apply logic*/
+            /*notice that data name and function name are the same in order to work*/
+        }
+    }
+}
+```
