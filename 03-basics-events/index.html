@@ -18,21 +18,28 @@
     </header>
     <section id="events">
       <h2>Events in Action</h2>
+      <div>counter</div>
       <button v-on:click="add">Add</button>
       <button v-on:click="subs">Remove</button>
       <button v-on:click="add5(5)">Add 5</button>
       <button v-on:click="subs5(5)">Remove 5</button>
       <p>Result: {{ counter }}</p>
+      <hr />
+      <br />
+      <div>value + secund argument:</div>
       <input
         type="text"
         v-on:input="setInput($event, 'plus second argument')"
       />
       <p>Your input: {{textInput}}</p>
+      <hr />
+      <br />
       <form v-on:submit.prevent="submitForm">
-        prevent default
+        <div>prevent default</div>
         <input type="text" />
         <button>signup</button>
       </form>
+      <hr />
       <br />
       <div>write and press enter to display:</div>
 
@@ -50,6 +57,20 @@
         v-on:keyup.enter="confirmText"
       />
       <p>Text: {{confirmedText}}</p>
+      <hr />
+      <br />
+      <div>reset values with v-model</div>
+      <!--      
+        <input
+        type="text"
+        v-bind:value="inputToReset"
+        v-on:input="event => inputToReset = event.target.value"
+      />-->
+      <input type="text" v-model="inputToReset" />
+      <button v-on:click="resetInput">reset input</button>
+      <p>value: {{inputToReset}}</p>
+      <hr />
+      <br />
     </section>
   </body>
 </html>

@@ -5,6 +5,7 @@ const app = Vue.createApp({
       textInput: "",
       text: "",
       confirmedText: "",
+      inputToReset: "",
     };
   },
   methods: {
@@ -30,6 +31,9 @@ const app = Vue.createApp({
       this.confirmedText = this.text;
     },
     submitForm() {},
+    resetInput() {
+      this.inputToReset = "";
+    },
   },
 });
 
