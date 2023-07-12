@@ -4,12 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>A First App</title>
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="../styles.css" />
   </head>
   <body>
-    <div id="app">
+    <header>
+      <h1>Goals</h1>
+    </header>
+    <div id="assignment">
       <div>
-        <label for="goal">Goal</label>
+        <label for="gaol">Write a goal</label>
         <input type="text" id="goal" v-model="enteredValue" />
         <button v-on:click="addGoals">Add Goal</button>
       </div>

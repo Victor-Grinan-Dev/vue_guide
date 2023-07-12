@@ -44,4 +44,4 @@ const app = Vue.createApp({
   },
 });
 
-app.mount("#events");
+app.mount("#assignment");

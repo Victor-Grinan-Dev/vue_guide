@@ -3,11 +3,25 @@
 }
 
 html {
-  font-family: 'Jost', sans-serif;
+  font-family: sans-serif;
 }
 
 body {
   margin: 0;
+}
+
+#app,
+#assignment {
+  margin: 3rem auto;
+  max-width: 40rem;
+  padding: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  margin: 3rem;
+  border-radius: 10px;
+  padding: 1rem;
+  text-align: center;
 }
 
 header {
@@ -20,22 +34,25 @@ header {
   text-align: center;
 }
 
-#assignment {
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-  margin: 3rem;
-  border-radius: 10px;
-  padding: 1rem;
-  text-align: center;
+label,
+input {
+  margin-bottom: 0.5rem;
+  display: block;
+  width: 100%;
 }
 
-#assignment h2 {
-  font-size: 2rem;
-  border-bottom: 4px solid #ccc;
-  color: #1b995e;
-  margin: 0 0 1rem 0;
+label {
+  font-weight: bold;
 }
 
-#assignment p {
+ul {
+  list-style: none;
+  margin: 1rem 0;
+  padding: 0;
+}
+
+li {
+  margin: 1rem 0;
   font-size: 1.25rem;
   font-weight: bold;
   background-color: #8ddba4;
@@ -44,18 +61,36 @@ header {
   border-radius: 25px;
 }
 
-#assignment input {
-  font: inherit;
-  border: 1px solid #ccc;
+h2 {
+  font-size: 2rem;
+  border-bottom: 4px solid #ccc;
+  color: #1b995e;
+  margin: 0 0 1rem 0;
 }
 
-#assignment input:focus {
+p {
+  font-size: 1.25rem;
+  font-weight: bold;
+  background-color: #8ddba4;
+  padding: 0.5rem;
+  color: #1f1f1f;
+  border-radius: 25px;
+}
+
+input {
+  font: inherit;
+  border: 1px solid #ccc;
+  width: 200px;
+  margin: auto;
+}
+
+input:focus {
   outline: none;
   border-color: #1b995e;
   background-color: #d7fdeb;
 }
 
-#assignment button {
+button {
   font: inherit;
   cursor: pointer;
   border: 1px solid #ff0077;
@@ -65,9 +100,29 @@ header {
   box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.26);
 }
 
-#assignment button:hover,
-#assignment button:active {
+button:hover,
+button:active {
   background-color: #ec3169;
   border-color: #ec3169;
   box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.26);
+}
+#styling {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  margin: 3rem;
+  border-radius: 10px;
+  padding: 1rem;
+  text-align: center;
+}
+
+.demo {
+  width: calc(100% - 32px);
+  height: 100px;
+  margin: 16px;
+  border: 2px dashed #ccc;
+  text-align: center;
+}
+
+.active {
+  border-color: red;
+  background-color: salmon;
 }

@@ -12,4 +12,4 @@ const app = Vue.createApp({
     },
   },
 });
-window.onload(app.mount("#app"));
+window.onload(app.mount("#assignment"));
