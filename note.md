@@ -20,6 +20,8 @@ you can have more than one event in a element!
 - v-on:click.right = when right click is pressed
 - v-on:click.left = this is the default setting
 
+- @click.stop = stop propagation. if the parent element has a on click event this will prevent that event to trigger over this child element
+
 #### keyup/keydown events:
 - v-on:keyup="function_name" = this fires on any key event
 
@@ -73,3 +75,20 @@ syntax:
     }
 }
 ```
+## Conditional rendering:
+### v-if, v-else, v-else-if.
+
+- you can't use it if the html elements are not direct siblings to eachother
+
+```html
+      <p v-if="goals.length === 0">
+        No goals have been added yet - please start adding some!
+      </p>
+
+      <ul v-else>
+        <li v-for="goal in goals">{{goal}}</li>
+      </ul>
+```
+
+## v-show
+- v-show doesnt deletes the html tag as if-else does but instead sets it css display value to hidden.

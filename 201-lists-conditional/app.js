@@ -5,15 +5,13 @@ const app = Vue.createApp({
       newGoal: "",
     };
   },
-  // watch: {
-  //   newGoal(val) {
-  //     console.log(val);
-  //   },
-  // },
   methods: {
     addGoal() {
       this.goals.push(this.newGoal);
       this.newGoal = "";
+    },
+    removeGoal(index) {
+      this.goals.splice(index, 1);
     },
   },
 });
