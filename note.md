@@ -92,3 +92,5 @@ syntax:
 
 ## v-show
 - v-show doesnt deletes the html tag as if-else does but instead sets it css display value to hidden.
+
+## components
