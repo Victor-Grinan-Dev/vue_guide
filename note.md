@@ -93,4 +93,37 @@ syntax:
 ## v-show
 - v-show doesnt deletes the html tag as if-else does but instead sets it css display value to hidden.
 
-## components
+## components:
+
+///////
+
+## Vue cli:
+
+type in your cmd, to install globally 
+```cmd
+npm install -g @vue/cli
+```
+
+to create a rpoject then type:
+```cdm
+vue create my-project-name
+```
+replace the script in package.json with:
+
+```json
+  "scripts": {
+    "server": "set NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service serve",
+    "build": "set NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service build",
+    "lint": "set NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service lint"
+  }
+```
+
+then you can run in cdm:
+```cmd
+npm run server
+```
+when you get the local address means is ready and you can copy that address to the browser url to see if is working.
+```cdm
+  - Local:   http://localhost:8080/
+  - Network: http://192.168.0.140:8080/
+```
