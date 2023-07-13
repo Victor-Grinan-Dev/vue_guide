@@ -7,12 +7,14 @@ const app = Vue.createApp({
           name: "Manuel Lorenz",
           phone: "01234 5678 991",
           email: "manuel@localhost.com",
+          isVissible: false,
         },
         {
           id: "123",
           name: "Julie Jones",
           phone: "09876 543 221",
           email: "julie@localhost.com",
+          isVissible: false,
         },
       ],
     };
@@ -32,7 +34,7 @@ app.component("friend-contact", {
       `,
   data() {
     return {
-      isDetailVissible: false,
+      isVissible: false,
       friend: {
         id: "321",
         name: "Manuel Lorenz",

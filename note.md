@@ -99,31 +99,41 @@ syntax:
 
 ## Vue cli:
 
-type in your cmd, to install globally 
+- type in your cmd, to install globally 
 ```cmd
 npm install -g @vue/cli
 ```
 
-to create a rpoject then type:
+- to create a rpoject then type:
 ```cdm
 vue create my-project-name
 ```
-replace the script in package.json with:
+- replace the script in package.json with:
 
 ```json
   "scripts": {
-    "server": "set NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service serve",
+    "serve": "set NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service serve",
     "build": "set NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service build",
     "lint": "set NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service lint"
   }
 ```
 
-then you can run in cdm:
+- then you can run in cdm:
 ```cmd
-npm run server
+npm run serve
 ```
-when you get the local address means is ready and you can copy that address to the browser url to see if is working.
+- when you get the local address means is ready and you can copy that address to the browser url to see if is working.
 ```cdm
   - Local:   http://localhost:8080/
   - Network: http://192.168.0.140:8080/
 ```
+
+## Creat project Option
+
+1. Use npm init vue instead of installing and using the Vue CLI
+
+2. Use the Volar extension instead of Vetur
+
+You don't have to use either of the two, but you may want to experiment with them. The Vue code you write, is of course 100% the same as shown in this course - no matter which setup you're using.
+
+npm init vue uses an official package to help you initialize Vue projects. You get a command line wizard that walks you through project creation, comparable to what you get with the Vue CLI (though with slightly different choices and options). For a basic Vue project, you can select "No" for all options.
