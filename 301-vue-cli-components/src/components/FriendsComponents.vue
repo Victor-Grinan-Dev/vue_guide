@@ -15,17 +15,44 @@
 
 <script>
 export default {
-  props: ["name", "phoneNumber", "emailAddress", "isFavorite"],
+  // props: ["name", "phoneNumber", "emailAddress", "isFavorite"],
+  /* supported props types: 
+        String
+        Number
+        Boolean
+        Array
+        Object
+        Date
+        Function
+        Symbol
+ */
+  props: {
+    name: {
+      type: String,
+      required: true,
+    },
+    phoneNumber: {
+      type: String,
+      required: true,
+    },
+    emailAddress: {
+      type: String,
+      required: true,
+    },
+    isFavorite: {
+      type: Boolean,
+      required: false,
+      // default: "0",
+      // validator: function (value) {
+      //   return value === "1" || value === "0";
+      // },
+      default: false,
+    },
+  },
   name: "FriendsComponent",
   data() {
     return {
       isVissible: false,
-      // friend: {
-      //   id: "321",
-      //   name: "Manuel Lorenz",
-      //   phone: "01234 5678 991",
-      //   email: "manuel@localhost.com",
-      // },
       friendIsFavorite: false,
     };
   },
@@ -34,12 +61,10 @@ export default {
       this.isVissible = !this.isVissible;
     },
     toggleFavorite() {
-      this.friendIsFavorite = !this.friendIsFavorite;
+      // this.friendIsFavorite = !this.friendIsFavorite;
+      this.$emit("toggle-favorite");
     },
   },
-  // props: {
-  //   details: Object,
-  // },
 };
 </script>
 
