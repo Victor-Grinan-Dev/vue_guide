@@ -4,22 +4,14 @@
     <!-- <HelloWorld msg="Welcome to Your Vue.js App" /> -->
     <ul>
       <FriendsComponents
-        name="Manuel Lorenz"
-        phone-number="01234 78992"
-        email-address="manuel@localhost.com"
-        isFavorite="false"
-      />
-      <FriendsComponents
-        name="Julie Jones"
-        phone-number="01234 78992"
-        email-address="julie@localhost.com"
-        isFavorite="false"
-      />
-      <FriendsComponents
-        name="Victor Grinan"
-        phone-number="01234 78992"
-        email-address="victor@localhost.com"
-        isFavorite="false"
+        v-for="friend in friends"
+        :key="friend.id"
+        :id="friend.id"
+        :name="friend.name"
+        :phone-number="friend.phone"
+        :email-address="friend.email"
+        :isFavorite="friend.isFavorite"
+        @toggle-favorite="toggleFavorite"
       />
     </ul>
   </div>
@@ -43,15 +35,32 @@ export default {
           name: "Manuel Lorenz",
           phone: "01234 5678 991",
           email: "manuel@localhost.com",
+          isFavorite: false,
         },
         {
           id: "123",
           name: "Julie Jones",
           phone: "09876 543 221",
           email: "julie@localhost.com",
+          isFavorite: false,
+        },
+        {
+          id: "213",
+          name: "Victor Grinan",
+          phone: "01234 78992",
+          email: "victor@localhost.com",
+          isFavorite: false,
         },
       ],
     };
+  },
+  methods: {
+    toggleFavorite(friendId) {
+      const identifiedFriend = this.friends.find(
+        (friend) => friend.id === friendId
+      );
+      identifiedFriend.isFavorite = !identifiedFriend.isFavorite;
+    },
   },
 };
 </script>

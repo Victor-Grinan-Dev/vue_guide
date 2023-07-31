@@ -1,6 +1,6 @@
 <template>
   <li key="this.">
-    <h2>{{ name }} {{ this.friendIsFavorite ? "✅" : "" }}</h2>
+    <h2>{{ name }} {{ this.isFavorite ? "✅" : "" }}</h2>
     <button v-on:click="toggleDetails">
       {{ isVissible ? "Hide Details" : "Show Details" }}
     </button>
@@ -16,7 +16,7 @@
 <script>
 export default {
   // props: ["name", "phoneNumber", "emailAddress", "isFavorite"],
-  /* supported props types: 
+  /* supported props types:
         String
         Number
         Boolean
@@ -27,6 +27,10 @@ export default {
         Symbol
  */
   props: {
+    id: {
+      type: String,
+      required: true,
+    },
     name: {
       type: String,
       required: true,
@@ -62,7 +66,7 @@ export default {
     },
     toggleFavorite() {
       // this.friendIsFavorite = !this.friendIsFavorite;
-      this.$emit("toggle-favorite");
+      this.$emit("toggle-favorite", this.id);
     },
   },
 };

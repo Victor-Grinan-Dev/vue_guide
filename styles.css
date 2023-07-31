@@ -8,15 +8,15 @@ html {
 
 body {
   margin: 0;
+  display: flex;
+  justify-content: center;
 }
 
 #app,
 #assignment {
   margin: 3rem auto;
-  max-width: 40rem;
-  padding: 1rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-
+  width: 90vw;
+  min-width: 20rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
   margin: 3rem;
   border-radius: 10px;
