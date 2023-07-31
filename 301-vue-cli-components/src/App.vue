@@ -1,9 +1,28 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <!-- <HelloWorld msg="Welcome to Your Vue.js App" /> -->
-  <FriendsComponents key="a" />
-  <FriendsComponents key="b" />
-  <FriendsComponents key="c" />
+  <div>
+    <img alt="Vue logo" src="./assets/logo.png" />
+    <!-- <HelloWorld msg="Welcome to Your Vue.js App" /> -->
+    <ul>
+      <FriendsComponents
+        name="Manuel Lorenz"
+        phone-number="01234 78992"
+        email-address="manuel@localhost.com"
+        isFavorite="false"
+      />
+      <FriendsComponents
+        name="Julie Jones"
+        phone-number="01234 78992"
+        email-address="julie@localhost.com"
+        isFavorite="false"
+      />
+      <FriendsComponents
+        name="Victor Grinan"
+        phone-number="01234 78992"
+        email-address="victor@localhost.com"
+        isFavorite="false"
+      />
+    </ul>
+  </div>
 </template>
 
 <script>
