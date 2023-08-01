@@ -2,8 +2,9 @@
   <div>
     <img alt="Vue logo" src="./assets/logo.png" />
     <!-- <HelloWorld msg="Welcome to Your Vue.js App" /> -->
+    <new-friend-component @submit-friend="addFriend" />
     <ul>
-      <FriendsComponents
+      <friends-components
         v-for="friend in friends"
         :key="friend.id"
         :id="friend.id"
@@ -19,6 +20,7 @@
 
 <script>
 import FriendsComponents from "./components/FriendsComponents.vue";
+import NewFriendComponent from "./components/NewFriend.vue";
 // import HelloWorld from "./components/HelloWorld.vue";
 import "./styles/styles.css";
 export default {
@@ -26,6 +28,7 @@ export default {
   components: {
     // HelloWorld,
     FriendsComponents,
+    NewFriendComponent,
   },
   data() {
     return {
@@ -60,6 +63,10 @@ export default {
         (friend) => friend.id === friendId
       );
       identifiedFriend.isFavorite = !identifiedFriend.isFavorite;
+    },
+    addFriend(newFriend) {
+      this.friends.push(newFriend);
+      console.log(this.$data);
     },
   },
 };
