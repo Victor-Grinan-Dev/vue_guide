@@ -6,6 +6,8 @@
     </button>
     <span> - </span>
     <button @click="toggleFavorite">Toggle Favorite</button>
+    <span> - </span>
+    <button @click="deleteFriend">Delete</button>
     <ul v-if="isVissible">
       <li><strong>Phone:</strong> {{ phoneNumber }}</li>
       <li><strong>Email:</strong> {{ emailAddress }}</li>
@@ -61,6 +63,15 @@ export default {
           return false;
         }
       },
+      "delete-friend": function (id) {
+        if (id) {
+          alert("Are you sure?");
+          return true;
+        } else {
+          console.warn("id is missing");
+          return false;
+        }
+      },
     },
   },
   name: "FriendsComponent",
@@ -77,6 +88,9 @@ export default {
     toggleFavorite() {
       // this.friendIsFavorite = !this.friendIsFavorite;
       this.$emit("toggle-favorite", this.id);
+    },
+    deleteFriend() {
+      this.$emit("delete-friend", this.id);
     },
   },
 };
