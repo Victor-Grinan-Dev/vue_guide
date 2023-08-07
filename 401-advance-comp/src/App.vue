@@ -15,6 +15,11 @@
         <p>{{ slotProps.thirdValue }}</p>
       </template>
     </course-goals>
+    <button @click="changeTab('manage-goals')">Manage goals</button>
+    <button @click="changeTab('active-goals')">Active goals</button>
+    <!-- <active-goals></active-goals>
+    <manage-goals></manage-goals> -->
+    <component :is="selectedComponent"></component>
   </div>
 </template>
 
@@ -23,6 +28,8 @@ import TheHeader from "./components/TheHeader.vue";
 import BadgeList from "./components/BadgeList.vue";
 import UserInfo from "./components/UserInfo.vue";
 import CourseGoals from "./components/CourseGoals.vue";
+import ActiveGoals from "./components/ActiveGoals.vue";
+import ManageGoals from "./components/ManageGoals.vue";
 
 export default {
   components: {
@@ -32,6 +39,8 @@ export default {
     BadgeList,
     UserInfo,
     CourseGoals,
+    ActiveGoals,
+    ManageGoals,
   },
   data() {
     return {
@@ -40,7 +49,13 @@ export default {
         description: "Site owner and admin",
         role: "admin",
       },
+      selectedComponent: "active-goals",
     };
+  },
+  methods: {
+    changeTab(cmp) {
+      this.selectedComponent = cmp;
+    },
   },
 };
 </script>
