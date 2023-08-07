@@ -8,6 +8,8 @@ import App from "./App.vue";
 import BaseBadge from "./components/BaseBadge.vue";
 import BaseCard from "./components/BaseCard.vue";
 import CourseGoals from "./components/CourseGoals.vue";
+import ActiveGoals from "./components/CourseGoals.vue";
+import ManageGoals from "./components/CourseGoals.vue";
 const app = createApp(App);
 
 // app.component('the-header', TheHeader);
@@ -17,5 +19,7 @@ const app = createApp(App);
 app.component("base-badge", BaseBadge);
 app.component("base-card", BaseCard);
 app.component("course-goals", CourseGoals);
+app.component("active-goals", ActiveGoals);
+app.component("manage-goals", ManageGoals);
 
 app.mount("#app");
