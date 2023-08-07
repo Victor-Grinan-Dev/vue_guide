@@ -15,11 +15,18 @@
         <p>{{ slotProps.thirdValue }}</p>
       </template>
     </course-goals>
-    <button @click="changeTab('manage-goals')">Manage goals</button>
-    <button @click="changeTab('active-goals')">Active goals</button>
-    <!-- <active-goals></active-goals>
+    <base-card>
+      <template v-slot:header>
+        <h2>Managing tabs</h2>
+      </template>
+      <button @click="changeTab('manage-goals')">Manage goals</button>
+      <button @click="changeTab('active-goals')">Active goals</button>
+      <!-- <active-goals></active-goals>
     <manage-goals></manage-goals> -->
-    <component :is="selectedComponent"></component>
+      <keep-alive>
+        <component :is="selectedComponent"></component>
+      </keep-alive>
+    </base-card>
   </div>
 </template>
 

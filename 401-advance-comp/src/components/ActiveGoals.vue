@@ -1,5 +1,5 @@
 <template>
-  <h2>Active Goals</h2>
+  <h3>Active Goals tab</h3>
 </template>
 
 <script>
