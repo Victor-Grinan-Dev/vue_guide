@@ -10,6 +10,7 @@ import BaseCard from "./components/BaseCard.vue";
 import CourseGoals from "./components/CourseGoals.vue";
 import ActiveGoals from "./components/CourseGoals.vue";
 import ManageGoals from "./components/CourseGoals.vue";
+import ErrorAlert from "./components/ErrorAlert.vue";
 const app = createApp(App);
 
 // app.component('the-header', TheHeader);
@@ -21,5 +22,6 @@ app.component("base-card", BaseCard);
 app.component("course-goals", CourseGoals);
 app.component("active-goals", ActiveGoals);
 app.component("manage-goals", ManageGoals);
+app.component("error-alert", ErrorAlert);
 
 app.mount("#app");
