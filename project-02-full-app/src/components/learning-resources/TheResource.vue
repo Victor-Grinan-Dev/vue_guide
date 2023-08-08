@@ -3,12 +3,12 @@
     <base-card>
       <base-button
         @click="setSelectedTab('stored-resources')"
-        :mode="selectedTab === 'stored-resources' ? null : 'flat'"
+        :mode="storeResButtonMode"
         >Stored Resources</base-button
       >
       <base-button
         @click="setSelectedTab('add-resource')"
-        :mode="selectedTab === 'add-resource' ? null : 'flat'"
+        :mode="addResButtonMode"
         >Add Resources</base-button
       >
     </base-card>
@@ -51,6 +51,14 @@ export default {
   methods: {
     setSelectedTab(tab) {
       this.selectedTab = tab;
+    },
+  },
+  computed: {
+    storeResButtonMode() {
+      return this.selectedTab === "stored-resources" ? null : "flat";
+    },
+    addResButtonMode() {
+      return this.selectedTab === "add-resource" ? null : "flat";
     },
   },
 };
