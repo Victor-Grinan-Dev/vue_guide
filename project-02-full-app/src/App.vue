@@ -1,25 +1,21 @@
 <template>
-  <ul></ul>
+  <ul>
+    <learning-resources
+      v-for="resource in storeResourses"
+      :key="resource.id"
+      :id="resource.id"
+      :title="resource.title"
+      :description="resource.description"
+    ></learning-resources>
+  </ul>
 </template>
 
 <script>
-// import TheHeader from "./components/TheHeader.vue";
-// import BadgeList from "./components/BadgeList.vue";
-// import UserInfo from "./components/UserInfo.vue";
-// import CourseGoals from "./components/CourseGoals.vue";
-// import ActiveGoals from "./components/ActiveGoals.vue";
-// import ManageGoals from "./components/ManageGoals.vue";
+import LearningResources from "./components/learning-resources/LearningResources.vue";
 
 export default {
   components: {
-    // "the-header": TheHeader, //standard way to register a component locally
-    // TheHeader: TheHeader, //this allows you to use self closing tag <TheHeader />
-    // TheHeader, //even shorter hand syntax
-    // BadgeList,
-    // UserInfo,
-    // CourseGoals,
-    // ActiveGoals,
-    // ManageGoals,
+    LearningResources,
   },
   data() {
     return {
@@ -44,8 +40,14 @@ export default {
 </script>
 
 <style>
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
 html {
-  font-family: sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 body {

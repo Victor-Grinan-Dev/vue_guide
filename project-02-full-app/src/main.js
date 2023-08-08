@@ -11,9 +11,10 @@ import App from "./App.vue";
 // import ActiveGoals from "./components/CourseGoals.vue";
 // import ManageGoals from "./components/CourseGoals.vue";
 // import ErrorAlert from "./components/ErrorAlert.vue";
+import LearningResources from "./components/learning-resources/LearningResources.vue";
 const app = createApp(App);
 
-// app.component('the-header', TheHeader);
+app.component("learning-resources", LearningResources);
 // app.component("badge-list", BadgeList);
 // app.component("user-info", UserInfo);
 
