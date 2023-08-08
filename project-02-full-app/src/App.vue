@@ -1,7 +1,5 @@
 <template>
-  <ul>
-    <StoredResources :resources="storeResourses" />
-  </ul>
+  <StoredResources :resources="storeResourses" />
 </template>
 
 <script>

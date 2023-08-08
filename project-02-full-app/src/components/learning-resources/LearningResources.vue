@@ -1,22 +1,25 @@
 <template>
   <li>
-    <div>
+    <base-card>
       <header>
         <h3>{{ title }}</h3>
         <button>delete</button>
       </header>
-    </div>
-    <p>{{ description }}</p>
-    <nav>
-      <a :href="link">view resource</a>
-    </nav>
+
+      <p>{{ description }}</p>
+      <nav>
+        <a :href="link">view resource</a>
+      </nav>
+    </base-card>
   </li>
 </template>
+
 <script>
 export default {
   props: ["id", "title", "description", "link"],
 };
 </script>
+
 <style scoped>
 li {
   margin: auto;
