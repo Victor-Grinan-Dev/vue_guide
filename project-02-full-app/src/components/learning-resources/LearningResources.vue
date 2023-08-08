@@ -21,6 +21,7 @@ export default {
 li {
   margin: auto;
   max-width: 40rem;
+  cursor: default;
 }
 
 header {
@@ -47,5 +48,9 @@ a {
 a:hover,
 a:active {
   color: #c89300;
+}
+
+button {
+  cursor: pointer;
 }
 </style>
