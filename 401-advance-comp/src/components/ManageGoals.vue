@@ -6,17 +6,20 @@
     <input type="text" ref="goal" v-model="inputValue" />
     <button @click="setGoal">send</button>
 
-    <error-alert v-if="inputIsInvalid">
-      <h2>Input is empty!</h2>
-      <p>Please enter at least a few characters...</p>
-      <button @click="closeModal">Confirm</button>
-    </error-alert>
+    <teleport to="body">
+      <!-- teleport renders his content in the designed tag, use css-selector rules (. #) or unique tag name like body-->
+      <error-alert v-if="inputIsInvalid">
+        <h2>Input is empty!</h2>
+        <p>Please enter at least a few characters...</p>
+        <button @click="closeModal">Confirm</button>
+      </error-alert>
 
-    <error-alert v-if="newGoalAdded">
-      <h2>New Goal added!</h2>
-      <p>{{ inputValue }}</p>
-      <button @click="closeModal">Confirm</button>
-    </error-alert>
+      <error-alert v-if="newGoalAdded">
+        <h2>New Goal added!</h2>
+        <p>{{ inputValue }}</p>
+        <button @click="closeModal">Confirm</button>
+      </error-alert>
+    </teleport>
   </div>
 </template>
 

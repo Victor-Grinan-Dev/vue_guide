@@ -10,6 +10,5 @@ dialog {
   top: 20vh;
   left: 25%;
   width: 50%;
-  z-index: 1;
 }
 </style>
