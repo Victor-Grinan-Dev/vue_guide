@@ -3,7 +3,7 @@
     <base-card>
       <header>
         <h3>{{ title }}</h3>
-        <button>delete</button>
+        <base-button mode="flat"> delete </base-button>
       </header>
 
       <p>{{ description }}</p>
@@ -51,9 +51,5 @@ a {
 a:hover,
 a:active {
   color: #c89300;
-}
-
-button {
-  cursor: pointer;
 }
 </style>
