@@ -1,41 +1,54 @@
 <template>
-  <base-card>
-    <form @submit.prevent="submitData">
-      <div class="form-control">
-        <label for="title">title:</label>
-        <input
-          type="text"
-          id="title"
-          name="title"
-          placeholder="eg.HTML Manual"
-          v-model="title"
-        />
-      </div>
-      <div class="form-control">
-        <label for="description">description:</label>
-        <textarea
-          type="text"
-          id="description"
-          name="description"
-          rows="3"
-          placeholder="eg. HTML's oficial page"
-          draggable="false"
-          v-model="description"
-        />
-      </div>
-      <div class="form-control">
-        <label for="link">link:</label>
-        <input
-          type="text"
-          id="link"
-          name="link"
-          placeholder="eg. https//html.org"
-          v-model="link"
-        />
-      </div>
-      <base-button>add resource</base-button>
-    </form>
-  </base-card>
+  <div>
+    <base-card>
+      <form @submit.prevent="submitData">
+        <div class="form-control">
+          <label for="title">title:</label>
+          <input
+            type="text"
+            id="title"
+            name="title"
+            placeholder="eg.HTML Manual"
+            v-model="title"
+          />
+        </div>
+        <div class="form-control">
+          <label for="description">description:</label>
+          <textarea
+            type="text"
+            id="description"
+            name="description"
+            rows="3"
+            placeholder="eg. HTML's oficial page"
+            draggable="false"
+            v-model="description"
+          />
+        </div>
+        <div class="form-control">
+          <label for="link">link:</label>
+          <input
+            type="text"
+            id="link"
+            name="link"
+            placeholder="eg. https//html.org"
+            v-model="link"
+          />
+        </div>
+        <base-button>add resource</base-button>
+      </form>
+    </base-card>
+    <teleport to="body">
+      <base-dialog v-if="inputError" @close-dialog="toggleDialog">
+        <template #header>Error</template>
+        <template #default
+          ><p>
+            At least one of the fields is incomplete, please check that all have
+            been filled.
+          </p>
+        </template>
+      </base-dialog>
+    </teleport>
+  </div>
 </template>
 <script>
 export default {
@@ -45,32 +58,28 @@ export default {
       title: "",
       description: "",
       link: "",
+      inputError: false,
     };
   },
   methods: {
     submitData() {
-      const title = this.title;
-      const description = this.description;
-      const link = this.link;
+      if (
+        this.title.trim() !== "" &&
+        this.description.trim() !== "" &&
+        this.link.trim() !== ""
+      ) {
+        const title = this.title.trim();
+        const description = this.description.trim();
+        const link = this.link.trim();
 
-      this.addResource(title, description, link);
+        this.addResource(title, description, link);
+      } else {
+        this.inputError = true;
+      }
     },
-    // addResource(e) {
-    //   e.preventDefault();
-    //   if (this.title && this.title && this.description && this.link) {
-    //     const newResource = {
-    //       id: this.title,
-
-    //     };
-    //     this.$emit("add-resource", newResource);
-    //     //reset data:
-    //     this.title = "";
-    //     this.description = "";
-    //     this.link = "";
-    //   } else {
-    //     console.log("empty fields!");
-    //   }
-    // },
+    toggleDialog() {
+      this.inputError = false;
+    },
   },
 };
 </script>
