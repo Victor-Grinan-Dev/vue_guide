@@ -39,7 +39,6 @@ export default {
   data() {
     return {
       selectedTab: "stored-resources",
-
       storeResources: [
         {
           id: "official-guide",
