@@ -48,4 +48,12 @@ button:active {
 .danger:active {
   background-color: #dd3700;
 }
+.static,
+.static:hover,
+.static:focus {
+  background-color: #640032;
+  color: white;
+  border: none;
+  cursor: default;
+}
 </style>

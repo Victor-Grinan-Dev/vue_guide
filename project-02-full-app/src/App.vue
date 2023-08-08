@@ -1,7 +1,7 @@
 <template>
   <div>
     <TheHeader appTitle="Vue App" />
-    <the-resource :resources="storeResourses"></the-resource>
+    <the-resource></the-resource>
   </div>
 </template>
 

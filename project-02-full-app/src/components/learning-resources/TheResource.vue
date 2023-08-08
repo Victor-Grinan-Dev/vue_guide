@@ -1,18 +1,29 @@
 <template>
   <div>
     <base-card>
-      <base-button
-        @click="setSelectedTab('stored-resources')"
-        :mode="storeResButtonMode"
-        >Stored Resources</base-button
-      >
-      <base-button
-        @click="setSelectedTab('add-resource')"
-        :mode="addResButtonMode"
-        >Add Resources</base-button
-      >
+      <div class="tabulatorBar">
+        <span class="tabsBtns">
+          <base-button
+            @click="setSelectedTab('stored-resources')"
+            :mode="storeResButtonMode"
+          >
+            Stored Resources
+          </base-button>
+          <base-button
+            @click="setSelectedTab('add-resource')"
+            :mode="addResButtonMode"
+          >
+            Add Resources
+          </base-button>
+        </span>
+        <base-button mode="static">
+          you have {{ storeResources.length }} Resources stored
+        </base-button>
+      </div>
     </base-card>
-    <component :is="selectedTab"></component>
+    <keep-alive>
+      <component :is="selectedTab"></component>
+    </keep-alive>
   </div>
 </template>
 
@@ -29,7 +40,7 @@ export default {
     return {
       selectedTab: "stored-resources",
 
-      storeResourses: [
+      storeResources: [
         {
           id: "official-guide",
           title: "Official Guide",
@@ -46,11 +57,20 @@ export default {
     };
   },
   provide() {
-    return { resources: this.storeResourses };
+    return { resources: this.storeResources, addResource: this.addResource };
   },
   methods: {
     setSelectedTab(tab) {
       this.selectedTab = tab;
+    },
+    addResource(title, description, link) {
+      const newResource = {
+        id: new Date().toISOString(),
+        title: title,
+        description: description,
+        link: link,
+      };
+      this.storeResources.unshift(newResource);
     },
   },
   computed: {
@@ -63,3 +83,17 @@ export default {
   },
 };
 </script>
+<style scoped>
+.tabulatorBar {
+  display: flex;
+  justify-content: space-between;
+}
+
+.tabsBtns {
+  display: flex;
+  gap: 5px;
+
+  background-color: rgb(155, 145, 165);
+  border-radius: 5px;
+}
+</style>
