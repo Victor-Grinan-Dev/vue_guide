@@ -71,6 +71,9 @@ export default {
       };
       this.storeResources.unshift(newResource);
     },
+    removeResource(id) {
+      console.log(id);
+    },
   },
   computed: {
     storeResButtonMode() {
