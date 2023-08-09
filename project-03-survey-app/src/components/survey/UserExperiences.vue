@@ -3,11 +3,12 @@
     <base-card>
       <h2>Submitted Experiences</h2>
       <div>
-        <base-button @click="LoadExperiences"
+        <base-button @click="loadExperiences"
           >Load Submitted Experiences</base-button
         >
       </div>
-      <ul>
+      <p v-if="isLoading">Loading...</p>
+      <ul v-if="!isLoading">
         <survey-result
           v-for="result in results"
           :key="result.id"
@@ -27,13 +28,15 @@ export default {
   data() {
     return {
       results: [],
+      isLoading: false,
     };
   },
   components: {
     SurveyResult,
   },
   methods: {
-    LoadExperiences() {
+    loadExperiences() {
+      this.isLoading = true;
       fetch(
         "https://vue-survey-app-62dfa-default-rtdb.europe-west1.firebasedatabase.app/surveys.json"
       )
@@ -54,9 +57,13 @@ export default {
             });
           }
           this.results = results;
+          this.isLoading = false;
         });
       // axios.get("https://vue-survey-app-62dfa-default-rtdb.europe-west1.firebasedatabase.app/surveys.json");
     },
+  },
+  mounted() {
+    this.loadExperiences();
   },
 };
 </script>
