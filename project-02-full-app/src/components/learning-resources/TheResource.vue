@@ -56,7 +56,11 @@ export default {
     };
   },
   provide() {
-    return { resources: this.storeResources, addResource: this.addResource };
+    return {
+      resources: this.storeResources,
+      addResource: this.addResource,
+      removeResource: this.removeResource,
+    };
   },
   methods: {
     setSelectedTab(tab) {
@@ -72,7 +76,12 @@ export default {
       this.storeResources.unshift(newResource);
     },
     removeResource(id) {
-      console.log(id);
+      //because we are providing-injecting the array "storeResources":
+      //if we use this.array.filter() to delete we are creating with new array (it wont work)
+
+      //this manipulates the original array instead of creating a new one:
+      const resIndex = this.storeResources.findIndex((res) => res.id === id);
+      this.storeResources.splice(resIndex, 1);
     },
   },
   computed: {
