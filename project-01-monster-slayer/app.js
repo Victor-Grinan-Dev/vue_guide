@@ -1,7 +1,7 @@
 const randomValue = (min, max) => {
   return Math.floor(Math.random() * (max - min)) + min;
 };
-
+/**ready */
 const app = Vue.createApp({
   data() {
     return {
