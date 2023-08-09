@@ -38,9 +38,10 @@
           />
           <label for="rating-great">Great</label>
         </div>
-        <p v-if="invalidInput">
+        <p v-if="invalidInput" class="errorMsg">
           One or more input fields are invalid. Please check your provided data.
         </p>
+        <p v-if="error" class="errorMsg">{{ error }}</p>
         <div>
           <base-button>Submit</base-button>
         </div>
@@ -57,6 +58,7 @@ export default {
       enteredName: "",
       chosenRating: null,
       invalidInput: false,
+      error: null,
     };
   },
   // emits: ["survey-submit"],
@@ -77,23 +79,8 @@ export default {
 
       this.enteredName = "";
       this.chosenRating = null;
+      this.error = null;
     },
-    // LoadExperiences() {
-    //   fetch(
-    //     "https://vue-survey-app-62dfa-default-rtdb.europe-west1.firebasedatabase.app/surveys.json"
-    //   )
-    //     .then((res) => {
-    //       if (res.ok) {
-    //         return res.json();
-    //       } else {
-    //         console.log("error");
-    //       }
-    //     })
-    //     .then((data) => {
-    //       console.log(data);
-    //     });
-    //   // axios.get("https://vue-survey-app-62dfa-default-rtdb.europe-west1.firebasedatabase.app/surveys.json");
-    // },
   },
 };
 </script>
@@ -107,5 +94,8 @@ input[type="text"] {
   display: block;
   width: 20rem;
   margin-top: 0.5rem;
+}
+.errorMsg {
+  color: crimson;
 }
 </style>
