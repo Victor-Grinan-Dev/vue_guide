@@ -8,7 +8,10 @@
         >
       </div>
       <p v-if="isLoading">Loading...</p>
-      <ul v-if="!isLoading">
+      <p v-else-if="!isLoading && (!results || results.length === 0)">
+        No stored data yet, please enter some data to start.
+      </p>
+      <ul v-else-if="!isLoading && results && results.length !== 0">
         <survey-result
           v-for="result in results"
           :key="result.id"
