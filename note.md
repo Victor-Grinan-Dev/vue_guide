@@ -138,3 +138,8 @@ You don't have to use either of the two, but you may want to experiment with the
 
 npm init vue uses an official package to help you initialize Vue projects. You get a command line wizard that walks you through project creation, comparable to what you get with the Vue CLI (though with slightly different choices and options). For a basic Vue project, you can select "No" for all options.
 
+## routing
+- needs a package
+```shell
+npm i --save vue-router@next
+```
