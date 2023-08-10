@@ -33,7 +33,7 @@ export default {
     loadTeamMembers(route) {
       const teamId = route.params.teamId; //params is reffering to the parent router
       const selectedTeam = this.teams.find((team) => team.id === teamId);
-      const members = selectedTeam.members;
+      const members = selectedTeam.members || [];
       const selectedMembers = [];
 
       for (const member of members) {
@@ -48,7 +48,13 @@ export default {
   created() {
     this.loadTeamMembers(this.$route);
   },
-
+  /** NAVIGATION GUARD */
+  // beforeRouterUpdate(to, from, next) {
+  //   console.log("before update in teams member cmp");
+  //   console.log(to, from);
+  //   this.loadTeamMembers(to.params.teamId);
+  //   next();
+  // },
   watch: {
     $route(newRoute) {
       this.loadTeamMembers(newRoute);
