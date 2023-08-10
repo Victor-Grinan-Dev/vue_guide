@@ -17,6 +17,8 @@ import UserItem from "../users/UserItem.vue";
 
 export default {
   inject: ["users", "teams"],
+  //use props instead if you are using the component from another component as embed
+  //for that set the props for this path {object} to true: {path: "/#", component: Foo, props:true}
   components: {
     UserItem,
   },
@@ -26,19 +28,31 @@ export default {
       members: [],
     };
   },
+
+  methods: {
+    loadTeamMembers(route) {
+      const teamId = route.params.teamId; //params is reffering to the parent router
+      const selectedTeam = this.teams.find((team) => team.id === teamId);
+      const members = selectedTeam.members;
+      const selectedMembers = [];
+
+      for (const member of members) {
+        const seletedUser = this.users.find((user) => user.id === member);
+        selectedMembers.push(seletedUser);
+      }
+
+      this.members = selectedMembers;
+      this.teamName = selectedTeam.name;
+    },
+  },
   created() {
-    const teamId = this.$route.params.teamId; //params is reffering to the parent router
-    const selectedTeam = this.teams.find((team) => team.id === teamId);
-    const members = selectedTeam.members;
-    const selectedMembers = [];
+    this.loadTeamMembers(this.$route);
+  },
 
-    for (const member of members) {
-      const seletedUser = this.users.find((user) => user.id === member);
-      selectedMembers.push(seletedUser);
-    }
-
-    this.members = selectedMembers;
-    this.teamName = selectedTeam.name;
+  watch: {
+    $route(newRoute) {
+      this.loadTeamMembers(newRoute);
+    },
   },
 };
 </script>
