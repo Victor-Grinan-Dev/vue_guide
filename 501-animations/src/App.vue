@@ -6,7 +6,23 @@
         {{ animatedBlock ? "Turn off" : "Animate" }}
       </button>
     </div>
-
+    <div class="container">
+      <p>managing the css with js:</p>
+      <transition
+        name="jsCSS"
+        @before-enter="beforeEnter"
+        @enter="enter"
+        @after-enter="afterEnter"
+        @before-leave="beforeLeave"
+        @leave="leave"
+        @after-leave="afterLeave"
+        @enter-cancelled="enterCancelled"
+        @leave-cancelled="leaveCancelled"
+      >
+        <div class="block2" v-if="isBlockVisible"></div>
+      </transition>
+      <button @click="toggleBlock">toggle block</button>
+    </div>
     <div class="container">
       <!--  <p v-if="isUsersVisible">I'm the user</p>-->
       <transition name="buttons" mode="out-in">
@@ -16,7 +32,15 @@
     </div>
 
     <div class="container">
-      <transition name="para">
+      <transition
+        name="para"
+        @before-enter="console.log('before enter')"
+        @before-leave="console.log('before leaves')"
+        @after-enter="console.log('after enter')"
+        @enter="console.log('enter')"
+        @leave="console.log('leave')"
+        @after-leave="console.log('after leave')"
+      >
         <p v-if="parraIsVisible">
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ea, nulla.
         </p>
@@ -43,6 +67,10 @@ export default {
       animatedBlock: false,
       parraIsVisible: false,
       isUsersVisible: false,
+      isBlockVisible: false,
+
+      enterInterval: null,
+      leaveInterval: null,
     };
   },
   methods: {
@@ -61,6 +89,54 @@ export default {
     toggleUsers() {
       this.isUsersVisible = !this.isUsersVisible;
     },
+
+    toggleBlock() {
+      this.isBlockVisible = !this.isBlockVisible;
+    },
+    beforeEnter(el) {
+      console.log(el);
+      el.style.opacity = 0;
+    },
+    enter(el, done) {
+      console.log(el);
+      let round = 1;
+      this.enterInterval = setInterval(() => {
+        el.style.opacity = round * 0.01;
+        round++;
+        if (round > 100) {
+          clearInterval(this.enterInterval);
+          done();
+        }
+      }, 20);
+    },
+
+    afterEnter(el) {
+      console.log(el);
+      el.style.opacity = 1;
+    },
+    leave(el, done) {
+      console.log(el);
+      let round = 1;
+      this.leaveInterval = setInterval(() => {
+        el.style.opacity = 1 - round * 0.02;
+        round++;
+        if (round > 100) {
+          clearInterval(this.leaveInterval);
+          done();
+        }
+      }, 20);
+    },
+    afterLeave(el) {
+      console.log(el);
+      el.style.opacity = 0;
+    },
+    //in order to override one animation and start the other animation
+    enterCancelled() {
+      clearInterval(this.enterInterval);
+    },
+    leaveCancelled() {
+      clearInterval(this.leaveInterval);
+    },
   },
 };
 </script>
@@ -74,6 +150,8 @@ html {
 }
 body {
   margin: 0;
+  background-color: #112331;
+  color: aliceblue;
 }
 button {
   font: inherit;
@@ -95,6 +173,14 @@ button:active {
   background-color: #290033;
   margin-bottom: 2rem;
   transition: transform 1s ease-out;
+}
+.block2 {
+  width: 8rem;
+  height: 8rem;
+  background-color: #290033;
+  margin-bottom: 2rem;
+  opacity: 0;
+  /* transition: opacity 3s ease-out; */
 }
 .container {
   max-width: 40rem;
@@ -181,7 +267,7 @@ button:active {
   transform: translateY(-30px);
 }
 .para-enter-active {
-  transition: all 0.5s ease-out;
+  transition: all 5s ease-out;
 }
 .para-enter-to {
   opacity: 1;
@@ -192,7 +278,7 @@ button:active {
   transform: translateY();
 }
 .para-leave-active {
-  transition: all 0.5s ease-out;
+  transition: all 2s ease-out;
 }
 .para-leave-to {
   opacity: 0;
