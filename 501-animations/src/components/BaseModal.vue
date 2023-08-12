@@ -1,15 +1,17 @@
 <template>
-  <div>
-    <div class="backdrop" @click="$emit('close')"></div>
-    <dialog open>
+  <div v-if="open" class="backdrop" @click="$emit('close')"></div>
+
+  <transition name="modal">
+    <dialog open v-if="open">
       <slot></slot>
     </dialog>
-  </div>
+  </transition>
 </template>
 
 <script>
 export default {
   emits: ["close"],
+  props: ["open"],
 };
 </script>
 
@@ -36,7 +38,8 @@ dialog {
   background-color: white;
   z-index: 100;
   border: none;
-  animation: apear 0.5s ease-out forwards;
+  /* animation: apear 0.5s ease-out forwards; */
+  /* opacity: 0; */
 }
 
 @keyframes apear {
@@ -49,27 +52,22 @@ dialog {
     transform: translateY(0) scale(1);
   }
 }
+@keyframes disapear {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(50px) scale(0.9);
+  }
+}
 
-.v-enter-from {
-  opacity: 0;
-  transform: translateY(-30px);
+.modal-enter-active {
+  animation: apear 0.5s ease-out;
 }
-.v-enter-active {
-  transition: all 0.5s ease-out;
-}
-.v-enter-to {
-  opacity: 1;
-  transform: translateY(0);
-}
-.v-leave-from {
-  opacity: 1;
-  transform: translateY();
-}
-.v-leave-active {
-  transition: all 0.5s ease-out;
-}
-.v-leave-to {
-  opacity: 0;
-  transform: translateY(-30px);
+.modal-leave-active {
+  animation: apear 0.5s ease-out reverse;
+  /* animation: disapear 0.5s ease-out; */
 }
 </style>

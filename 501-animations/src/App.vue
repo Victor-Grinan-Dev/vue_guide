@@ -8,7 +8,15 @@
     </div>
 
     <div class="container">
-      <transition>
+      <!--  <p v-if="isUsersVisible">I'm the user</p>-->
+      <transition name="buttons" mode="out-in">
+        <button v-if="!isUsersVisible" @click="toggleUsers">show users</button>
+        <button v-else @click="toggleUsers">Hide users</button>
+      </transition>
+    </div>
+
+    <div class="container">
+      <transition name="para">
         <p v-if="parraIsVisible">
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ea, nulla.
         </p>
@@ -16,10 +24,11 @@
       <button @click="toggleParragraph">Toggle Parragraph</button>
     </div>
 
-    <base-modal @close="hideDialog" v-if="dialogIsVisible">
+    <base-modal @close="hideDialog" :open="dialogIsVisible">
       <p>This is a test dialog!</p>
       <button @click="hideDialog">Close it!</button>
     </base-modal>
+
     <div class="container">
       <button @click="showDialog">Show Dialog</button>
     </div>
@@ -33,6 +42,7 @@ export default {
       dialogIsVisible: false,
       animatedBlock: false,
       parraIsVisible: false,
+      isUsersVisible: false,
     };
   },
   methods: {
@@ -47,6 +57,9 @@ export default {
     },
     hideDialog() {
       this.dialogIsVisible = false;
+    },
+    toggleUsers() {
+      this.isUsersVisible = !this.isUsersVisible;
     },
   },
 };
@@ -99,6 +112,32 @@ button:active {
   animation: slide-fade 2s ease-in-out infinite;
 }
 
+/* buttons */
+.buttons-enter-from,
+.buttons-leave-to {
+  opacity: 0;
+}
+
+.buttons-enter-active {
+  transition: opacity 1s ease-out;
+}
+.buttons-leave-active {
+  transition: opacity 1s ease-in;
+}
+
+.buttons-enter-to,
+.buttons-leave-from {
+  opacity: 1;
+}
+/* @keyframes just-fade {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+} */
+
 @keyframes slide-fade {
   0% {
     transform: translateX(0) scale(1);
@@ -117,26 +156,71 @@ button:active {
   }
 }
 
-.v-enter-from {
+@keyframes apear {
+  from {
+    opacity: 0;
+    transform: translateY(-50px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+@keyframes disapear {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(50px) scale(0.9);
+  }
+}
+.para-enter-from {
   opacity: 0;
   transform: translateY(-30px);
 }
-.v-enter-active {
+.para-enter-active {
   transition: all 0.5s ease-out;
 }
-.v-enter-to {
+.para-enter-to {
   opacity: 1;
   transform: translateY(0);
 }
-.v-leave-from {
+.para-leave-from {
   opacity: 1;
   transform: translateY();
 }
-.v-leave-active {
+.para-leave-active {
   transition: all 0.5s ease-out;
 }
-.v-leave-to {
+.para-leave-to {
   opacity: 0;
   transform: translateY(-30px);
 }
+
+/** modal */
+/* .modal-enter-from {
+  opacity: 0;
+  transform: translateY(-30px);
+} */
+.modal-enter-active {
+  animation: apear 0.5s ease-out forwards;
+}
+/* .modal-enter-to {
+  opacity: 1;
+  transform: translateY(0);
+} */
+/* .modal-leave-from {
+  opacity: 1;
+  transform: translateY();
+} */
+.modal-leave-active {
+  animation: disapear 0.5s ease-out forwards;
+}
+
+/* .modal-leave-to {
+  opacity: 0;
+ transform: translateY(-30px);
+} */
 </style>
