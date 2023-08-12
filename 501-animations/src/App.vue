@@ -9,7 +9,8 @@
     <div class="container">
       <p>managing the css with js:</p>
       <transition
-        name="jsCSS"
+        name="js-no-CSS"
+        :css="false"
         @before-enter="beforeEnter"
         @enter="enter"
         @after-enter="afterEnter"
@@ -35,9 +36,9 @@
       <transition
         name="para"
         @before-enter="console.log('before enter')"
-        @before-leave="console.log('before leaves')"
-        @after-enter="console.log('after enter')"
         @enter="console.log('enter')"
+        @after-enter="console.log('after enter')"
+        @before-leave="console.log('before leaves')"
         @leave="console.log('leave')"
         @after-leave="console.log('after leave')"
       >
@@ -113,6 +114,9 @@ export default {
     afterEnter(el) {
       console.log(el);
       el.style.opacity = 1;
+    },
+    beforeLeave(el) {
+      console.log(el);
     },
     leave(el, done) {
       console.log(el);
