@@ -1,7 +1,12 @@
 <template>
   <div class="application">
     <navegation-bar></navegation-bar>
-    <router-view></router-view>
+
+    <router-view v-slot="slotProps">
+      <transition name="route" mode="out-in">
+        <component :is="slotProps.Component"></component>
+      </transition>
+    </router-view>
 
     <base-modal @close="hideDialog" :open="dialogIsVisible">
       <p>This is a test dialog!</p>
@@ -112,21 +117,26 @@ button:active {
   animation: disapear 0.5s ease-out forwards;
 }
 
+.route-enter-from {
+}
+
+.route-enter-active {
+  animation: slide-fade 0.4s ease-out;
+}
+
+.route-leave-active {
+  animation: slide-fade 0.4s ease-in reverse;
+}
+
 @keyframes slide-fade {
   0% {
-    transform: translateX(0) scale(1);
+    transform: scale(0.9);
+    opacity: 0;
   }
-  25% {
-    transform: translateX(-150px) scale(1.1);
-  }
-  50% {
-    transform: translateX(0) scale(1);
-  }
-  75% {
-    transform: translateX(150px) scale(1.1);
-  }
+
   100% {
-    transform: translateX(0) scale(1);
+    transform: scale(1);
+    opacity: 1;
   }
 }
 </style>

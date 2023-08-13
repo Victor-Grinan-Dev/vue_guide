@@ -7,6 +7,7 @@ import CourseGoals from "./components/CourseGoals.vue";
 import ListData from "./components/ListData.vue";
 import SquareComp from "./components/SquaresComp.vue";
 import ParraGraph from "./components/ParraGraph.vue";
+
 const router = createRouter({
   history: createWebHistory(),
 
@@ -18,8 +19,12 @@ const router = createRouter({
     { path: "/parragraph", component: ParraGraph },
   ],
 });
+
 const app = createApp(App);
+
 app.use(router);
 app.component("base-modal", BaseModal);
 
-app.mount("#app");
+router.isReady().then(() => {
+  app.mount("#app");
+});
