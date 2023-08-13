@@ -28,9 +28,12 @@ export default {
 
 dialog {
   position: fixed;
-  top: 30vh;
-  width: 30rem;
-  left: calc(50% - 15rem);
+  top: 30%;
+  width: 35vw;
+  min-width: 275px;
+  max-width: 400px;
+  left: 50%;
+  transform: translate(-50%);
   margin: 0;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
   border-radius: 12px;
@@ -45,21 +48,21 @@ dialog {
 @keyframes apear {
   from {
     opacity: 0;
-    transform: translateY(-50px) scale(0.9);
+    transform: translateY(-50px) translateX(-50%) scale(0.9);
   }
   to {
     opacity: 1;
-    transform: translateY(0) scale(1);
+    transform: translateY(0) translateX(-50%) scale(1);
   }
 }
 @keyframes disapear {
   from {
     opacity: 1;
-    transform: translateY(0) scale(1);
+    transform: translateY(0) translateX(-50%) scale(1);
   }
   to {
     opacity: 0;
-    transform: translateY(50px) scale(0.9);
+    transform: translateY(50px) translateX(-50%) scale(0.9);
   }
 }
 
