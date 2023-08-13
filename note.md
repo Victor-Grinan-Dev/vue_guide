@@ -143,3 +143,8 @@ npm init vue uses an official package to help you initialize Vue projects. You g
 ```shell
 npm i --save vue-router@next
 ```
+
+# VUEX
+```shell
+npm install --save vuex@next
+```
