@@ -1,5 +1,5 @@
 <template>
-  <h3><span>Normalized counter value:</span>{{ counter }}</h3>
+  <h3><span>Extra action to final value:</span> {{ counter }}</h3>
   <h4>(min = 0, max = 100, result final counter * 3 )</h4>
   all comp have access to ther same data and the same function:
   <div>

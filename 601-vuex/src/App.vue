@@ -1,5 +1,6 @@
 <template>
   <base-container title="Vuex">
+    <p>Asyncronous (click and wait)</p>
     <the-counter></the-counter>
     <button @click="restart">restart</button>
     <button @click="subsOne">substract 1</button>
@@ -25,19 +26,19 @@ export default {
 
   methods: {
     restart() {
-      this.$store.commit("reset");
+      this.$store.dispatch("reset");
     },
     addOne() {
-      this.$store.commit("increment");
+      this.$store.dispatch("increment");
     },
     subsOne() {
-      this.$store.commit("decrement");
+      this.$store.dispatch("decrement");
     },
     addFive() {
-      this.$store.commit("increase", { value: 5 });
+      this.$store.dispatch("increase", { value: 5 });
     },
     subsFive() {
-      this.$store.commit("decrease", { value: 5 });
+      this.$store.dispatch("decrease", { value: 5 });
     },
   },
 };
