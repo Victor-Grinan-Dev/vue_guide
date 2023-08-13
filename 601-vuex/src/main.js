@@ -11,6 +11,13 @@ const store = createStore({
   actions: {
     //ALOWS ASYNCRONOUS FUNCTIONS:
     reset(context) {
+      console.log(context); // in context is commit, dispatcth, getters and state.
+      //in case you need extra functionalities that involve those data pieces.
+      //Do not manipulate the state from here plz.
+
+      console.log(context.getters.finalCounter);
+      console.log(context.getters.normalizeCounter);
+
       setTimeout(() => {
         context.commit("reset", 0);
       }, 1000);
