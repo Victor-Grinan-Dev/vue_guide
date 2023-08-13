@@ -14,24 +14,36 @@
 export default {
   computed: {
     counter() {
-      return this.$store.getters.normalizeCounter;
+      return this.$store.getters["counter/normalizeCounter"]; //with namespace
     },
   },
   methods: {
     restart() {
-      this.$store.commit("reset");
+      this.$store.dispatch({
+        type: "counter/reset",
+      });
     },
     addOne() {
-      this.$store.commit("increment");
+      this.$store.dispatch({
+        type: "counter/increment",
+      });
     },
     subsOne() {
-      this.$store.commit("decrement");
+      this.$store.dispatch({
+        type: "counter/decrement",
+      });
     },
     addFive() {
-      this.$store.commit("increase", { value: 5 });
+      this.$store.dispatch({
+        type: "counter/increase",
+        value: 5,
+      });
     },
     subsFive() {
-      this.$store.commit("decrease", { value: 5 });
+      this.$store.dispatch({
+        type: "counter/decrease",
+        value: 5,
+      });
     },
   },
 };

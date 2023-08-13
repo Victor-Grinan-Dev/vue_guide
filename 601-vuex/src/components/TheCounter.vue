@@ -7,9 +7,10 @@ import { mapGetters } from "vuex";
 export default {
   computed: {
     // counter() {
-    //   return this.$store.getters.finalCounter;
+    // return this.$store.getters["counter/finalCounter"];
     // },
-    ...mapGetters(["finalCounter"]),
+    // ...mapGetters("finalCounter"),//without namespace
+    ...mapGetters("counter", ["finalCounter"]), //with namespace
   },
 };
 </script>

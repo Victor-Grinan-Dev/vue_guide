@@ -39,11 +39,11 @@ export default {
 
     /* YOU CAN CHANGE THE NAME  */
     ...mapActions({
-      restart: "reset",
-      addOne: "increment",
-      decrement: "decrement",
-      increase: "increase",
-      decrease: "decrease",
+      restart: "counter/reset",
+      addOne: "counter/increment",
+      decrement: "counter/decrement",
+      increase: "counter/increase",
+      decrease: "counter/decrease",
     }),
   },
 };
