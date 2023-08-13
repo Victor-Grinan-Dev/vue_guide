@@ -1,28 +1,22 @@
 <template>
-  <base-container title="Vuex">
-    <the-counter></the-counter>
+  <h3><span>Normalized counter value:</span>{{ counter }}</h3>
+  <h4>(min = 0, max = 100, result final counter * 3 )</h4>
+  all comp have access to ther same data and the same function:
+  <div>
     <button @click="restart">restart</button>
     <button @click="subsOne">substract 1</button>
     <button @click="addOne">add 1</button>
     <button @click="addFive">add 5</button>
     <button @click="subsFive">substract 5</button>
-  </base-container>
-  <base-container title="EXTRA COMPONENT">
-    <extra-component></extra-component>
-  </base-container>
+  </div>
 </template>
-
 <script>
-import BaseContainer from "./components/BaseContainer.vue";
-import TheCounter from "./components/TheCounter.vue";
-import ExtraComponent from "./components/ExtraComponent.vue";
 export default {
-  components: {
-    BaseContainer,
-    TheCounter,
-    ExtraComponent,
+  computed: {
+    counter() {
+      return this.$store.getters.normalizeCounter;
+    },
   },
-
   methods: {
     restart() {
       this.$store.commit("reset");
@@ -42,17 +36,3 @@ export default {
   },
 };
 </script>
-
-<style>
-* {
-  box-sizing: border-box;
-}
-
-html {
-  font-family: sans-serif;
-}
-
-body {
-  margin: 0;
-}
-</style>

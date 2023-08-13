@@ -8,6 +8,21 @@ const store = createStore({
       counter: 0,
     };
   },
+  getters: {
+    finalCounter(state) {
+      return state.counter;
+    },
+    normalizeCounter(_, getters) {
+      const finalCounter = getters.finalCounter * 3;
+      if (finalCounter < 0) {
+        return 0;
+      }
+      if (finalCounter > 100) {
+        return 100;
+      }
+      return finalCounter;
+    },
+  },
   mutations: {
     reset(state) {
       state.counter = 0;
