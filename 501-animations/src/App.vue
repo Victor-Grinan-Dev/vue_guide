@@ -117,9 +117,6 @@ button:active {
   animation: disapear 0.5s ease-out forwards;
 }
 
-.route-enter-from {
-}
-
 .route-enter-active {
   animation: slide-fade 0.4s ease-out;
 }
