@@ -22,19 +22,27 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
+import { mapGetters } from "vuex";
+
 export default {
-  inject: ['removeProductFromCart'],
-  props: ['prodId', 'title', 'image', 'price', 'qty'],
+  inject: ["removeProductFromCart"],
+  props: ["prodId", "title", "image", "price", "qty"],
+
   computed: {
+    ...mapGetters(["isLoggedIn", "cart", "itemTotal"]),
     itemTotal() {
       return (this.price * this.qty).toFixed(2);
-    }
+    },
   },
+
   methods: {
-    remove() {
-      this.removeProductFromCart(this.prodId);
-    }
-  }
+    ...mapActions(["login", "logout", "removeProductFromCart"]),
+  },
+
+  remove() {
+    this.removeProductFromCart(this.prodId);
+  },
 };
 </script>
 
