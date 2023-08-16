@@ -16,14 +16,16 @@
 
 <script>
 import ProductItem from "../components/products/ProductItem.vue";
-import { mapGetters } from "vuex";
+// import { mapGetters } from "vuex";
 export default {
-  // inject: ['products'],
   components: {
     ProductItem,
   },
   computed: {
-    ...mapGetters(["products"]),
+    // ...mapGetters("prods", ["products"]),
+    products() {
+      return this.$store.getters["prods/products"];
+    },
   },
 };
 </script>
