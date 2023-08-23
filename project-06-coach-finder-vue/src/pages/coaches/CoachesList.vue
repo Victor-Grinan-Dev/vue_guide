@@ -3,7 +3,7 @@
   <section>
     <div class="controls">
       <button>Refresh</button>
-      <router-link to="/register">Register</router-link>
+      <router-link to="/register">Register as Coach</router-link>
     </div>
     <ul v-if="hasCoaches">
       <li
