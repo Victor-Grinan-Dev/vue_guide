@@ -11,11 +11,14 @@
         :key="coach.id"
         :id="coach.id"
         :first-name="coach.firstName"
-        :last-name="coach - lastName"
+        :last-name="coach.lastName"
         :rate="coach.hourlyRate"
         :areas="coach.areas"
-      ></li>
+      >
+        {{ coach.firstName }}
+      </li>
     </ul>
+    <h3 v-else>no coaches found</h3>
   </section>
 </template>
 <script>
