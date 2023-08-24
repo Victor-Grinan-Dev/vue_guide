@@ -8,7 +8,7 @@
   <section>
     <base-card>
       <header>
-        <base-card> <h2>Interested? Reach Now!</h2></base-card>
+        <h2>Interested? Reach Now!</h2>
         <base-button :to="contactLink">Contact</base-button>
       </header>
       <router-view></router-view>

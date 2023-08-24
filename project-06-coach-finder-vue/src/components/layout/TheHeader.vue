@@ -1,5 +1,5 @@
 <template>
-  <header>
+  <header class="the-header">
     <nav>
       <router-link to="/"><h1>Find a Coach</h1></router-link>
       <ul>
@@ -10,6 +10,6 @@
   </header>
 </template>
 
-<style>
+<style scoped>
 @import "../../styles/header.css";
 </style>
