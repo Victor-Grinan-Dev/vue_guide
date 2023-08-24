@@ -3,7 +3,7 @@
   <section>
     <base-card>
       <div class="controls">
-        <button>Refresh</button>
+        <base-button mode="outline">Refresh</base-button>
         <router-link to="/register">Register as Coach</router-link>
       </div>
       <ul v-if="hasCoaches">
@@ -11,8 +11,8 @@
           v-for="coach in filterdCoaches"
           :key="coach.id"
           :id="coach.id"
-          :first-name="coach.firstName"
-          :last-name="coach.lastName"
+          :firstName="coach.firstName"
+          :lastName="coach.lastName"
           :rate="coach.hourlyRate"
           :areas="coach.areas"
         >

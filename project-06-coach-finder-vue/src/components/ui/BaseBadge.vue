@@ -1,6 +1,18 @@
 <template>
-  <button></button>
+  <span class="badge" :class="type">{{ text }}</span>
 </template>
+
+<script>
+export default {
+  props: ["type", "title"],
+  computed: {
+    text() {
+      return this.title.toUpperCase();
+    },
+  },
+};
+</script>
+
 <style scoped>
 @import "../../styles/base-badge.css";
 </style>
