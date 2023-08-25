@@ -18,14 +18,14 @@
 
 <script>
 export default {
-  emits: ["change-filter"],
+  emits: ['change-filter'],
   data() {
     return {
       filters: {
         frontend: true,
         backend: true,
-        career: true,
-      },
+        career: true
+      }
     };
   },
   methods: {
@@ -34,14 +34,34 @@ export default {
       const isActive = event.target.checked;
       const updatedFilters = {
         ...this.filters,
-        [inputId]: isActive,
+        [inputId]: isActive
       };
       this.filters = updatedFilters;
-      this.$emit("change-filter", updatedFilters);
-    },
-  },
-};
+      this.$emit('change-filter', updatedFilters);
+    }
+  }
+}
 </script>
-<style>
-@import "../../styles/coach-filter.css";
+
+<style scoped>
+h2 {
+  margin: 0.5rem 0;
+}
+
+.filter-option {
+  margin-right: 1rem;
+}
+
+.filter-option label,
+.filter-option input {
+  vertical-align: middle;
+}
+
+.filter-option label {
+  margin-left: 0.25rem;
+}
+
+.filter-option.active label {
+  font-weight: bold;
+}
 </style>
