@@ -4,7 +4,7 @@ import coachDetail from "./pages/coaches/CoachDetail.vue";
 import coachesList from "./pages/coaches/CoachesList.vue";
 import coachRegistration from "./pages/coaches/CoachRegistration.vue";
 import contactCoach from "./pages/requests/ContactCoach.vue";
-import requestsRecieved from "./pages/requests/RequestsRecieved.vue";
+import requestsRecieved from "./pages/requests/RequestsReceived.vue";
 import notFound from "./pages/NotFound.vue";
 
 const router = createRouter({
