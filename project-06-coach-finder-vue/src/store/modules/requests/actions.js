@@ -13,7 +13,7 @@ export default {
   //     userEmail: payload.email,
   //     message: payload.message
   //   };
-  //   const response = await fetch(`https://vue-http-demo-85e9e.firebaseio.com/requests/${payload.coachId}.json`, {
+  // const response = await fetch(`https://coaches-fdce3-default-rtdb.europe-west1.firebasedatabase.app/requests/${payload.coachId}.json`, {
   //     method: 'POST',
   //     body: JSON.stringify(newRequest)
   //   });
