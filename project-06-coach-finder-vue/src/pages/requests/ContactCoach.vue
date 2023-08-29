@@ -1,16 +1,17 @@
 <template>
-  <form>
-    <div class="form-control">
+  <form @submit.prevent="submitForm">
+    <div class="form-control" :class="{ invalid: !email.isValid }">
       <label for="email">Email</label>
-      <input type="email" id="email" />
+      <input type="email" id="email" v-model.trim="email.val" />
     </div>
-    <div class="form-control">
+    <div class="form-control" :class="{ invalid: !message.isValid }">
       <label for="message">Email</label>
-      <textarea id="message" rows="5"></textarea>
+      <textarea id="message" rows="5" v-model.trim="message.val"></textarea>
     </div>
     <div class="actions">
       <base-button>Send message</base-button>
     </div>
+    <p v-if="!formIsValid">Please fix the error(s) above.</p>
   </form>
 </template>
 
@@ -18,10 +19,48 @@
 export default {
   data() {
     return {
-      email: "",
-      message: "",
+      email: {
+        val: "",
+        isValid: true,
+      },
+      message: {
+        val: "",
+        isValid: true,
+      },
       formIsValid: true,
     };
+  },
+  methods: {
+    clearValidity(input) {
+      this[input].isValid = true;
+    },
+    validateForm() {
+      this.formIsValid = true;
+
+      if (this.email.val === "" || !this.email.val.includes("@")) {
+        this.email.isValid = false;
+        this.formIsValid = false;
+      }
+      if (this.message.val === "") {
+        this.message.isValid = false;
+        this.formIsValid = false;
+      }
+    },
+    submitForm() {
+      this.validateForm();
+
+      if (!this.formIsValid) {
+        return;
+      }
+      const data = {
+        coachId: this.$route.params.id,
+        email: this.email.val,
+        message: this.message.val,
+      };
+      this.$store.dispatch("requests/contactCoach", data);
+      console.log(data);
+      this.$router.replace("/coaches");
+    },
   },
 };
 </script>
@@ -66,5 +105,13 @@ textarea:focus {
 
 .actions {
   text-align: center;
+}
+
+.invalid label {
+  color: red;
+}
+.invalid input,
+.invalid textarea {
+  border: 1px solid red;
 }
 </style>
