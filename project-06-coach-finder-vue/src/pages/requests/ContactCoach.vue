@@ -13,6 +13,18 @@
     </div>
   </form>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      email: "",
+      message: "",
+      formIsValid: true,
+    };
+  },
+};
+</script>
 <style scoped>
 form {
   margin: 1rem;
