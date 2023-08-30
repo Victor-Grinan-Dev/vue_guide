@@ -1,3 +1,4 @@
+import { BASE_URL } from "@/ENV/fakeENV";
 export default {
   async registerCoach(context, data) {
     const userId = context.rootGetters.userId; //get access to the base index getters.
@@ -9,13 +10,10 @@ export default {
       areas: data.areas,
     };
 
-    const response = await fetch(
-      `https://coaches-fdce3-default-rtdb.europe-west1.firebasedatabase.app/coaches/${userId}.json`,
-      {
-        method: "PUT",
-        body: JSON.stringify(coachData),
-      }
-    );
+    const response = await fetch(`${BASE_URL}/coaches/${userId}.json`, {
+      method: "PUT",
+      body: JSON.stringify(coachData),
+    });
 
     // const responseData = await response.json();
 
@@ -33,9 +31,7 @@ export default {
       return;
     }
 
-    const response = await fetch(
-      `https://coaches-fdce3-default-rtdb.europe-west1.firebasedatabase.app/coaches.json`
-    );
+    const response = await fetch(`${BASE_URL}/coaches.json`);
     const responseData = await response.json();
 
     if (!response.ok) {
