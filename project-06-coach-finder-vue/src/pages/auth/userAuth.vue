@@ -11,9 +11,7 @@
       </div>
       <br />
       <p v-if="!formIsValid">
-        Please enter a valid email and/or a valid password ({{
-          charsLong
-        }}
+        Please enter a valid email and/or a valid password ({{ charsLong }}
         chars long)
       </p>
       <base-button>Login</base-button>
@@ -43,7 +41,11 @@ export default {
       }
     },
     switchMode() {
-      this.mode = "signup";
+      if (this.mode === "login") {
+        this.mode = "signup";
+      } else {
+        this.mode = "login";
+      }
     },
   },
 };
