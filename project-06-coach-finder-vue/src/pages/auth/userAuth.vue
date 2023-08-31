@@ -14,9 +14,9 @@
         Please enter a valid email and/or a valid password ({{ charsLong }}
         chars long)
       </p>
-      <base-button>Login</base-button>
+      <base-button>{{ submitButtonCaption }}</base-button>
       <base-button @click="switchMode" type="button" mode="flat"
-        >Signup instead</base-button
+        >{{ switchButtonCaption }} instead</base-button
       >
     </form>
   </base-card>
@@ -32,6 +32,18 @@ export default {
       mode: "login",
       charsLong: 8,
     };
+  },
+  computed: {
+    submitButtonCaption() {
+      return `${this.mode}`;
+    },
+    switchButtonCaption() {
+      if (this.mode === "login") {
+        return "signup";
+      } else {
+        return "login";
+      }
+    },
   },
   methods: {
     submitForm() {

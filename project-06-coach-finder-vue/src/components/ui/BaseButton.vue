@@ -1,8 +1,8 @@
 <template>
-  <button v-if="!link" :class="mode">
+  <button v-if="!link" :class="mode" class="capitalized">
     <slot></slot>
   </button>
-  <router-link v-else :to="to" :class="mode">
+  <router-link v-else :to="to" class="capitalized" :class="mode">
     <slot></slot>
   </router-link>
 </template>
@@ -13,20 +13,20 @@ export default {
     mode: {
       type: String,
       required: false,
-      default: null
+      default: null,
     },
     link: {
       type: Boolean,
       required: false,
-      default: false
+      default: false,
     },
     to: {
       type: String,
       required: false,
-      default: '/'
-    }
-  }
-}
+      default: "/",
+    },
+  },
+};
 </script>
 
 <style scoped>
@@ -62,6 +62,10 @@ button:active {
   background-color: transparent;
   border-color: #270041;
   color: #270041;
+}
+
+.capitalized {
+  text-transform: capitalize;
 }
 
 .flat:hover,
