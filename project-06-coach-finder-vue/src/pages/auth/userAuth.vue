@@ -1,23 +1,52 @@
 <template>
   <base-card>
-    <form class="">
+    <form @submit.prevent="submitForm">
       <div class="from-control">
         <label for="email">E-Mail</label>
-        <input type="email" id="email" />
+        <input type="email" id="email" v-model="email" />
       </div>
       <div class="from-control">
         <label for="password">Password</label>
-        <input type="password" id="password" />
+        <input type="password" id="password" v-model="password" />
       </div>
       <br />
+      <p v-if="!formIsValid">
+        Please enter a valid email and/or a valid password ({{
+          charsLong
+        }}
+        chars long)
+      </p>
       <base-button>Login</base-button>
-      <base-button type="button" mode="flat">Signup instead</base-button>
+      <base-button @click="switchMode" type="button" mode="flat"
+        >Signup instead</base-button
+      >
     </form>
   </base-card>
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      email: "",
+      password: "",
+      formIsValid: true,
+      mode: "login",
+      charsLong: 8,
+    };
+  },
+  methods: {
+    submitForm() {
+      if (this.email === "" || this.password.length < this.charsLong) {
+        this.formIsValid = false;
+        return;
+      }
+    },
+    switchMode() {
+      this.mode = "signup";
+    },
+  },
+};
 </script>
 
 <style scoped>
