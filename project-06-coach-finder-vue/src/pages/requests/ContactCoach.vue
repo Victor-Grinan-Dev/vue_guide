@@ -58,7 +58,6 @@ export default {
         message: this.message.val,
       };
       this.$store.dispatch("requests/contactCoach", data);
-      console.log(data);
       this.$router.replace("/coaches");
     },
   },
