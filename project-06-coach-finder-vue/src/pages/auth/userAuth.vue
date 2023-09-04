@@ -61,22 +61,25 @@ export default {
         this.formIsValid = false;
         return;
       }
+
       this.isLoading = true;
+      const actionPayload = {
+        email: this.email,
+        password: this.password,
+      };
 
       try {
         if (this.mode === "login") {
-          //...
+          await this.$store.dispatch("signin", actionPayload);
         } else {
-          await this.$store.dispatch("signup", {
-            email: this.email,
-            password: this.password,
-          });
+          await this.$store.dispatch("signup", actionPayload);
         }
       } catch (err) {
         this.error = err.message || "Failed to authenticate";
       }
       this.isLoading = false;
     },
+
     switchMode() {
       if (this.mode === "login") {
         this.mode = "signup";
