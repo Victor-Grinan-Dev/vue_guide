@@ -10,7 +10,10 @@ export default {
       areas: data.areas,
     };
 
-    const response = await fetch(`${BASE_URL}/coaches/${userId}.json`, {
+    const token = context.rootGetters.token;
+    const endPoint = `${BASE_URL}/coaches/${userId}.json?auth=`;
+
+    const response = await fetch(endPoint + token, {
       method: "PUT",
       body: JSON.stringify(coachData),
     });
