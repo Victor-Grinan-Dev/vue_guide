@@ -38,7 +38,7 @@ export default {
       password: "",
       formIsValid: true,
       mode: "login",
-      charsLong: 8,
+      charsLong: 6,
       isLoading: false,
       error: null,
     };

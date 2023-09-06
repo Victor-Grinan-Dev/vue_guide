@@ -22,7 +22,7 @@ export default {
       throw error;
     }
     context.commit("setUser", {
-      token: responseData.token,
+      token: responseData.idToken,
       userId: responseData.localId,
       expiresIn: responseData.expiresIn,
     });
@@ -47,11 +47,18 @@ export default {
       throw error;
     }
 
-    console.log(responseData);
     context.commit("setUser", {
       token: responseData.token,
       userId: responseData.userId,
       expiresIn: responseData.expiresIn,
+    });
+  },
+
+  logout(context) {
+    context.commit("setUser", {
+      token: null,
+      userId: null,
+      expiresIn: null,
     });
   },
 };
