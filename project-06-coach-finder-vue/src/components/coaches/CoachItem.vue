@@ -1,4 +1,7 @@
 <template>
+  <base-dialog :show="dialog" title="You must login first" @close="closeDialog">
+    <base-button link to="/auth">Login</base-button>
+  </base-dialog>
   <li>
     <h3>{{ fullName }}</h3>
     <h4>${{ rate }}/hour</h4>
@@ -11,7 +14,10 @@
       ></base-badge>
     </div>
     <div class="actions">
-      <base-button mode="outline" link :to="coachContactLink"
+      <base-button v-if="isLoggedIn" mode="outline" link :to="coachContactLink"
+        >Contact</base-button
+      >
+      <base-button v-else mode="outline" @click="openDialog"
         >Contact</base-button
       >
       <base-button link :to="coachDetailsLink">View Details</base-button>
@@ -22,6 +28,19 @@
 <script>
 export default {
   props: ["id", "firstName", "lastName", "rate", "areas"],
+  data() {
+    return {
+      dialog: false,
+    };
+  },
+  methods: {
+    openDialog() {
+      this.dialog = true;
+    },
+    closeDialog() {
+      this.dialog = false;
+    },
+  },
   computed: {
     fullName() {
       return this.firstName + " " + this.lastName;
@@ -31,6 +50,9 @@ export default {
     },
     coachDetailsLink() {
       return this.$route.path + "/" + this.id; // /coaches/c1
+    },
+    isLoggedIn() {
+      return this.$store.getters.isAuthenticated;
     },
   },
 };
