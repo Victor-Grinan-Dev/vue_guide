@@ -10,11 +10,11 @@
       <form @submit.prevent="submitForm">
         <div class="from-control">
           <label for="email">E-Mail</label>
-          <input type="email" id="email" v-model="email" />
+          <input type="email" id="email" v-model="email" autocomplete="email"/>
         </div>
         <div class="from-control">
           <label for="password">Password</label>
-          <input type="password" id="password" v-model="password" />
+          <input type="password" id="password" v-model="password" autocomplete="password"/>
         </div>
         <br />
         <p v-if="!formIsValid">
@@ -74,8 +74,11 @@ export default {
         } else {
           await this.$store.dispatch("signup", actionPayload);
         }
-        const redirectUrl = "/" + this.$route.query.redirect || "coaches";
+        // const redirectUrl = "/" + this.$route.query.redirect || "coaches"; //not working console.log(redirectUrl)
+        const redirectUrl = "/coaches";
+        
         this.$router.replace(redirectUrl);
+        
       } catch (err) {
         this.error = err.message || "Failed to authenticate";
       }
@@ -88,6 +91,7 @@ export default {
       } else {
         this.mode = "login";
       }
+      // console.log(this.mode) //ok
     },
     handleError() {
       this.error = null;
