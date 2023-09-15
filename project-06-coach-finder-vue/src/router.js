@@ -7,6 +7,7 @@ import coachesList from "./pages/coaches/CoachesList.vue";
 // import requestsRecieved from "./pages/requests/RequestsReceived.vue";
 // import notFound from "./pages/NotFound.vue";
 // import userAuth from "./pages/auth/userAuth.vue";
+
 import store from "./store/index";
 
 //async routes
