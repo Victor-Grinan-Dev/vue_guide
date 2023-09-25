@@ -17,9 +17,16 @@
 </template>
 
 <script>
+import { inject } from 'vue';
 export default {
   props: ["id", "title", "description", "link"],
-  inject: ["removeResource"],
+
+  setup() {
+    const removeResource = inject('removeResource');
+    return {
+      removeResource,
+    }
+  }
 };
 </script>
 
