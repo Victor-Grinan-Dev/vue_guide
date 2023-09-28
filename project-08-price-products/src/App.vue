@@ -4,7 +4,7 @@
 </template>
 
 <script>
-import { ref, provide } from 'vue';
+import { reactive, provide } from 'vue';
 
 import TheHeader from './components/TheHeader.vue';
 
@@ -13,7 +13,7 @@ export default {
     TheHeader,
   },
   setup() {
-    const products = ref([
+    const products = reactive([
       {
         id: 'p1',
         title: 'A Carpet',
