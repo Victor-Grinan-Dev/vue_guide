@@ -35,7 +35,7 @@ export default {
         description: productData.description,
         price: productData.price,
       };
-      products.value.push(newProduct);
+      products.push(newProduct);
     }
 
     provide('products', products);

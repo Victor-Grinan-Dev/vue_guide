@@ -11,12 +11,13 @@ import { inject } from 'vue';
 import { useRoute } from 'vue-router';
 
 export default {
-  setup() {
+  props: ['pid'],
+  setup(props) {
+    console.log(props.pid);
     const products = inject('products');
     const route = useRoute();
-    console.log(route.params.id)
-    // const selectedProduct = products.find(product => product.id === product.id);
-    const selectedProduct = products[0];
+    const selectedProduct = products.find(product => product.id === route.params.pid);
+    // const selectedProduct = products.find(product => product.id === props.pid);
 
     const title = selectedProduct.title;
     const price = selectedProduct.price;
@@ -26,7 +27,6 @@ export default {
       title,
       price,
       description,
-      // selectedProduct 
     };
   },
 };
