@@ -7,21 +7,22 @@
 </template>
 
 <script>
-import { inject } from 'vue';
+import { inject, computed } from 'vue';
 import { useRoute } from 'vue-router';
 
 export default {
   props: ['pid'],
   setup(props) {
-    console.log(props.pid);
+    console.log('props vlaue:', props.pid);
     const products = inject('products');
+
     const route = useRoute();
-    const selectedProduct = products.find(product => product.id === route.params.pid);
+    const selectedProduct = computed(() => products.find(product => product.id === route.params.pid));
     // const selectedProduct = products.find(product => product.id === props.pid);
 
-    const title = selectedProduct.title;
-    const price = selectedProduct.price;
-    const description = selectedProduct.description;
+    const title = computed(() => selectedProduct.value.title);
+    const price = computed(() => selectedProduct.value.price);
+    const description = computed(() => selectedProduct.value.description);
 
     return {
       title,
