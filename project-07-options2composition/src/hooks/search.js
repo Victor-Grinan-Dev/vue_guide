@@ -7,11 +7,11 @@ export default function useSearch(items, searchParam) {
   const availableItems = computed(() => {
     let filterdeItems = [];
     if (activeSearchTerm.value) {
-      filterdeItems = items.filter((item) =>
+      filterdeItems = items.value.filter((item) =>
         item[searchParam].includes(activeSearchTerm.value)
       );
-    } else if (items) {
-      filterdeItems = items;
+    } else if (items.value) {
+      filterdeItems = items.value;
     }
     return filterdeItems;
   });
